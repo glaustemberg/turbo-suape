@@ -2080,7 +2080,7 @@
   if(window.IntersectionObserver){
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){if(e.isIntersecting){mostra(e.target);io.unobserve(e.target);}});
-    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    },{threshold:0,rootMargin:'0px 0px -6% 0px'});
     alvos.forEach(function(t){io.observe(t);});
   }else alvos.forEach(mostra);
   function varre(){
@@ -2088,7 +2088,7 @@
     alvos.forEach(function(e){
       if(e.classList.contains('vis'))return;
       var r=e.getBoundingClientRect();
-      if(r.top<h*0.94&&r.bottom>0)mostra(e);
+      if(r.top<h*0.96)mostra(e);
     });
   }
   setTimeout(varre,900);
@@ -2159,6 +2159,12 @@
     },{rootMargin:'200px 0px'});
     vids.forEach(function(v){vo.observe(v);});
   }
+
+  /* Seguro contra tela em branco: nenhuma falha de observador pode deixar o
+     documento invisível. No pior caso o conteúdo aparece inteiro e de uma vez,
+     sem animação, mas aparece. */
+  setTimeout(function(){[].forEach.call(document.querySelectorAll('[data-r]'),
+    function(e){e.classList.add('vis');});},4000);
 })();
 </script>
 

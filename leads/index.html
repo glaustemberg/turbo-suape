@@ -857,7 +857,7 @@
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});
-    },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+    },{threshold:0,rootMargin:'0px 0px -6% 0px'});
     targets.forEach(function(t){io.observe(t);});
   }else targets.forEach(show);
 
@@ -899,6 +899,12 @@
     });
   });
   frame();
+
+  /* Seguro contra tela em branco: nenhuma falha de observador pode deixar o
+     documento invisível. No pior caso o conteúdo aparece inteiro e de uma vez,
+     sem animação, mas aparece. */
+  setTimeout(function(){[].forEach.call(document.querySelectorAll('[data-r]'),
+    function(e){e.classList.add('vis');});},4000);
 })();
 </script>
 

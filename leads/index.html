@@ -22,7 +22,41 @@
 <meta name="twitter:description" content="Análise da base de leads: ranking de potencial, gatilhos públicos, segmentação por trilha e a sequência de abordagem recomendada.">
 <meta name="twitter:image" content="https://glaustemberg.github.io/turbo-suape/leads/capa.jpg">
 <link rel="canonical" href="https://glaustemberg.github.io/turbo-suape/leads/">
-<style>html,body{margin:0;padding:0;background:#f6f4f0}</style>
+<style>html,body{margin:0;padding:0;background:#f6f4f0}
+/* ══ mobile ══
+   Gráfico denso em tela estreita ou rola ou vira rótulo de 3px. Aqui ele sangra
+   até as bordas da tela para ganhar largura, e rola o quanto faltar, com a
+   largura mínima calculada por gráfico para o menor rótulo ficar legível. */
+@media(max-width:720px){
+  .ch{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximate;overscroll-behavior-x:contain}
+  .ch>svg{min-width:var(--mw,100%);scroll-snap-align:start}
+  /* sangria: o cartão do gráfico usa a largura inteira da tela */
+  .card.ch{margin-inline:calc(-1 * clamp(1.1rem,4vw,2.6rem));
+    border-radius:0;border-left:none;border-right:none;
+    padding-inline:clamp(1.1rem,4vw,2.6rem)}
+  .card.ch>svg{margin-inline:0}
+  /* indica que há mais gráfico fora da tela */
+  .ch{position:relative}
+  .ch::after{content:'';position:absolute;top:0;right:0;bottom:0;width:34px;
+    pointer-events:none;background:linear-gradient(90deg,transparent,var(--surf));
+    opacity:.9}
+  .tws{position:relative}
+  .tz table{font-size:.84rem}
+  /* a ponte de vídeo encurta: 86vh em celular empurra o texto para fora */
+  .reel{height:clamp(440px,64vh,620px)}
+  .reel .pane{padding:1.15rem 1.1rem}
+  /* números grandes não podem estourar a linha */
+  .cifra{font-size:clamp(2.4rem,13vw,3.6rem)}
+  .open{min-height:auto;padding:5rem 0 2.5rem}
+}
+@media(max-width:420px){
+  .mx{font-size:.58rem}
+  .mx .d{min-width:16px;height:16px;font-size:.55rem}
+  .acct{grid-template-columns:1.6rem 1fr auto;gap:.6rem}
+}
+
+</style>
 </head>
 <body>
 <style>
@@ -355,7 +389,7 @@
         <h3>Distribuição dos 131 turbos por fabricante</h3>
         <span class="s">base de leads · revisão de 10/05/2026</span>
       </div>
-      <svg viewBox="0 0 800 130" role="img" aria-label="Distribuição de turbocompressores por fabricante">
+      <svg style="--mw:576px" viewBox="0 0 800 130" role="img" aria-label="Distribuição de turbocompressores por fabricante">
         <g class="bar-g">
           <rect x="0" y="10" width="573" height="30" rx="5" fill="var(--ember)"/>
           <rect x="0" y="52" width="128" height="30" rx="5" fill="var(--patina)"/>
@@ -408,7 +442,7 @@
         <h3>Turbos mapeados por praça, contra distância de Suape</h3>
         <span class="s">tamanho da bolha proporcional ao número de turbos</span>
       </div>
-      <svg viewBox="0 0 820 340" role="img" aria-label="Dispersão de plantas por distância e número de turbos">
+      <svg style="--mw:738px" viewBox="0 0 820 340" role="img" aria-label="Dispersão de plantas por distância e número de turbos">
         <g stroke="var(--line)" stroke-width="1">
           <line x1="70" y1="60" x2="790" y2="60"/><line x1="70" y1="130" x2="790" y2="130"/>
           <line x1="70" y1="200" x2="790" y2="200"/><line x1="70" y1="270" x2="790" y2="270"/>

@@ -22,7 +22,41 @@
 <meta name="twitter:description" content="Dossiê completo do projeto de turbocompressores em Suape: onze confrontos entre o que o material afirma e o que os dados primários mostram, com due diligence das duas empresas envolvidas.">
 <meta name="twitter:image" content="https://glaustemberg.github.io/turbo-suape/dossie/capa.jpg">
 <link rel="canonical" href="https://glaustemberg.github.io/turbo-suape/dossie/">
-<style>html,body{margin:0;padding:0;background:#f6f4f0}</style>
+<style>html,body{margin:0;padding:0;background:#f6f4f0}
+/* ══ mobile ══
+   Gráfico denso em tela estreita ou rola ou vira rótulo de 3px. Aqui ele sangra
+   até as bordas da tela para ganhar largura, e rola o quanto faltar, com a
+   largura mínima calculada por gráfico para o menor rótulo ficar legível. */
+@media(max-width:720px){
+  .ch{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximate;overscroll-behavior-x:contain}
+  .ch>svg{min-width:var(--mw,100%);scroll-snap-align:start}
+  /* sangria: o cartão do gráfico usa a largura inteira da tela */
+  .card.ch{margin-inline:calc(-1 * clamp(1.1rem,4vw,2.6rem));
+    border-radius:0;border-left:none;border-right:none;
+    padding-inline:clamp(1.1rem,4vw,2.6rem)}
+  .card.ch>svg{margin-inline:0}
+  /* indica que há mais gráfico fora da tela */
+  .ch{position:relative}
+  .ch::after{content:'';position:absolute;top:0;right:0;bottom:0;width:34px;
+    pointer-events:none;background:linear-gradient(90deg,transparent,var(--surf));
+    opacity:.9}
+  .tws{position:relative}
+  .tz table{font-size:.84rem}
+  /* a ponte de vídeo encurta: 86vh em celular empurra o texto para fora */
+  .reel{height:clamp(440px,64vh,620px)}
+  .reel .pane{padding:1.15rem 1.1rem}
+  /* números grandes não podem estourar a linha */
+  .cifra{font-size:clamp(2.4rem,13vw,3.6rem)}
+  .open{min-height:auto;padding:5rem 0 2.5rem}
+}
+@media(max-width:420px){
+  .mx{font-size:.58rem}
+  .mx .d{min-width:16px;height:16px;font-size:.55rem}
+  .acct{grid-template-columns:1.6rem 1fr auto;gap:.6rem}
+}
+
+</style>
 </head>
 <body>
 <style>
@@ -836,7 +870,7 @@
     <div class="card ch mt2" data-r data-dl="3">
       <div class="ch-h"><h3>Colapso do único braço internacional</h3>
         <span>Draaijer Turbo Service Spain SL · 2024 · INFORMA D&amp;B</span></div>
-      <svg viewBox="0 0 600 210" role="img" aria-label="Variação de indicadores financeiros da unidade espanhola em 2024">
+      <svg style="--mw:346px" viewBox="0 0 600 210" role="img" aria-label="Variação de indicadores financeiros da unidade espanhola em 2024">
         <g font-size="17.8" class="lbl-d" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif">
           <text x="150" y="32">Vendas</text><text x="150" y="70">Patrimônio líquido</text>
           <text x="150" y="108">Ativo total</text><text x="150" y="146">Retorno sobre PL</text>
@@ -907,7 +941,7 @@
     <div class="card ch mt3" data-r data-dl="2">
       <div class="ch-h"><h3>Cronograma físico-financeiro, reconstruído</h3>
         <span>estava embutido como imagem de 694 px no PDF</span></div>
-      <svg viewBox="0 0 1000 300" role="img" aria-label="Cronograma de sete fases ao longo de 48 meses">
+      <svg style="--mw:756px" viewBox="0 0 1000 300" role="img" aria-label="Cronograma de sete fases ao longo de 48 meses">
         <g stroke="var(--line)">
           <line x1="205" y1="14" x2="205" y2="264"/><line x1="399" y1="14" x2="399" y2="264"/>
           <line x1="593" y1="14" x2="593" y2="264"/><line x1="787" y1="14" x2="787" y2="264"/>
@@ -952,7 +986,7 @@
     <div class="sp-a mt3">
       <div class="card ch" data-r>
         <div class="ch-h"><h3>Onde o dinheiro vai</h3><span>memorial, seção 5.1</span></div>
-        <svg viewBox="0 0 460 250" role="img" aria-label="Distribuição do investimento por bloco">
+        <svg style="--mw:316px" viewBox="0 0 460 250" role="img" aria-label="Distribuição do investimento por bloco">
           <g class="bg" style="transform-origin:0 center">
             <rect x="0" y="10" width="420" height="26" rx="4" fill="var(--ember)"/>
             <rect x="0" y="56" width="365" height="26" rx="4" fill="var(--ember)"/>
@@ -1019,7 +1053,7 @@
     <div class="card ch mt3" data-r data-dl="2">
       <div class="ch-h"><h3>Capacidade de balanceamento contra credencial formal</h3>
         <span>tamanho da bolha proporcional ao número de funcionários</span></div>
-      <svg viewBox="0 0 840 440" role="img" aria-label="Dispersão de concorrentes por capacidade de balanceamento e credencial">
+      <svg style="--mw:756px" viewBox="0 0 840 440" role="img" aria-label="Dispersão de concorrentes por capacidade de balanceamento e credencial">
         <g stroke="var(--line)">
           <line x1="110" y1="62" x2="800" y2="62"/><line x1="110" y1="140" x2="800" y2="140"/>
           <line x1="110" y1="218" x2="800" y2="218"/><line x1="110" y1="296" x2="800" y2="296"/>
@@ -1138,7 +1172,7 @@
     <div class="card ch" data-r data-dl="2">
       <div class="ch-h"><h3 style="font-size:1.05rem;margin:0">Receita de referência e margem bruta por linha de serviço</h3>
         <span>aba Service Mix do modelo financeiro do próprio projeto</span></div>
-      <svg viewBox="0 0 1000 250" role="img" aria-label="Receita de referência e margem bruta por linha de serviço">
+      <svg style="--mw:720px" viewBox="0 0 1000 250" role="img" aria-label="Receita de referência e margem bruta por linha de serviço">
         <g font-size="13.6" class="lbl-d" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif">
           <text x="196" y="34">Peças e kits rotativos</text><text x="196" y="90">Manutenção preventiva</text>
           <text x="196" y="146">Reparo de emergência</text><text x="196" y="202">Suporte de engenharia</text>
@@ -1233,7 +1267,7 @@
     <div class="card ch mt3" data-r data-dl="2">
       <div class="ch-h"><h3>O fator de carga da planta que vale 60% do modelo</h3>
         <span>premissa contra despacho declarado pela própria usina</span></div>
-      <svg viewBox="0 0 840 200" role="img" aria-label="Fator de carga assumido contra despacho real de Suape II">
+      <svg style="--mw:687px" viewBox="0 0 840 200" role="img" aria-label="Fator de carga assumido contra despacho real de Suape II">
         <g font-size="11.5" fill="var(--haze)" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif">
           <text x="192" y="36">Assumido no modelo</text><text x="192" y="96">Despacho real 2018</text>
           <text x="192" y="156">Despacho real 2019</text>
@@ -1515,7 +1549,7 @@
 
     <h3 class="mt3" data-r>Onde estão, contra a distância de Suape</h3>
     <div class="card ch" data-r data-dl="2">
-      <svg viewBox="0 0 840 330" role="img" aria-label="Dispersão de plantas por distância de Suape e número de turbos">
+      <svg style="--mw:756px" viewBox="0 0 840 330" role="img" aria-label="Dispersão de plantas por distância de Suape e número de turbos">
         <g stroke="var(--line)">
           <line x1="80" y1="56" x2="810" y2="56"/><line x1="80" y1="126" x2="810" y2="126"/>
           <line x1="80" y1="196" x2="810" y2="196"/><line x1="80" y1="266" x2="810" y2="266"/>
@@ -1554,7 +1588,7 @@
 
     <h3 class="mt3" data-r>A linha do tempo que ninguém montou</h3>
     <div class="card ch" data-r data-dl="2">
-      <svg viewBox="0 0 900 215" role="img" aria-label="Linha do tempo dos contratos e eventos das plantas âncora">
+      <svg style="--mw:771px" viewBox="0 0 900 215" role="img" aria-label="Linha do tempo dos contratos e eventos das plantas âncora">
         <line class="ax" x1="40" y1="155" x2="866" y2="155" stroke-width="1"/>
         <g class="axl" font-family="Consolas,monospace" font-size="10.5" text-anchor="middle">
           <text x="40" y="178">2008</text><text x="178" y="178">2012</text><text x="316" y="178">2015</text>
@@ -1606,7 +1640,7 @@
     <h3 class="mt3" data-r>A própria base avisa onde não confiar</h3>
     <div class="sp-a" data-r data-dl="2">
       <div class="card ch">
-        <svg viewBox="0 0 420 182" role="img" aria-label="Nível de confiança das dezesseis linhas da base de leads">
+        <svg style="--mw:328px" viewBox="0 0 420 182" role="img" aria-label="Nível de confiança das dezesseis linhas da base de leads">
           <g class="vg">
             <rect x="40" y="70" width="76" height="80" rx="4" fill="var(--patina)"/>
             <rect x="152" y="6" width="76" height="144" rx="4" fill="var(--brass)"/>
